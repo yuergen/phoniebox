@@ -463,13 +463,9 @@ config_spotify() {
 # * client_secret
 
 "
-    read -rp "Do you want to enable Spotify? [Y/n] " response
+    read -rp "Do you want to enable Spotify? [y/N] " response
     case "$response" in
-        [nN][oO]|[nN])
-            SPOTinstall=NO
-            echo "You don't want spotify support."
-            ;;
-        *)
+        [yY][jJ]|[sS])
             SPOTinstall=YES
             #clear
             echo "#####################################################
@@ -494,6 +490,11 @@ config_spotify() {
             read -rp "Type your client_id: " SPOTIclientid
             read -rp "Type your client_secret: " SPOTIclientsecret
             ;;
+        *)
+            SPOTinstall=NO
+            echo "You don't want spotify support."
+            ;;
+
     esac
     # append variables to config file
     {
