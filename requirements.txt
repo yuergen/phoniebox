@@ -10,6 +10,9 @@ youtube_dl
 pyserial
 RPi.GPIO
 
+spi
+spidev
+
 # Type checking for python
 # typing
 
