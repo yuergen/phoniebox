@@ -7,7 +7,7 @@ User=phonie
 Group=phonie
 Restart=always
 RestartSec=10
-WorkingDirectory=/home/pi/RPi-Jukebox-RFID
+WorkingDirectory=/home/phonie/phoniebox
 ExecStart=/home/phonie/phoniebox/scripts/daemon_mqtt_client.py
 
 [Install]

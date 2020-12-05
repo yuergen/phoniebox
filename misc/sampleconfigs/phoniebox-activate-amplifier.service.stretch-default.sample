@@ -6,7 +6,7 @@ After=network.target iptables.service firewalld.service
 User=phonie
 Group=phonie
 Restart=always
-WorkingDirectory=/home/pi/RPi-Jukebox-RFID
+WorkingDirectory=/home/phonie/phoniebox
 ExecStart=/home/phonie/phoniebox/scripts/activate_amplifier.py
 
 [Install]

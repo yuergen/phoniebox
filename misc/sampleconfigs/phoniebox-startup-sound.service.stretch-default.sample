@@ -7,7 +7,7 @@ User=phonie
 Group=phonie
 Type=oneshot
 RemainAfterExit=true
-WorkingDirectory=/home/pi/RPi-Jukebox-RFID
+WorkingDirectory=/home/phonie/phoniebox
 ExecStartPre=/home/phonie/phoniebox/scripts/playout_controls.sh -c=setvolumetostartup
 ExecStart=/bin/sleep 2
 ExecStartPost=/usr/bin/mpg123 /home/phonie/phoniebox/shared/startupsound.mp3

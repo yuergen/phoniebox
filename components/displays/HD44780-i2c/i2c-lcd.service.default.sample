@@ -6,7 +6,7 @@ After=network.target phoniebox-rfid-reader.service
 User=phonie
 Group=phonie
 Restart=always
-WorkingDirectory=/home/pi/RPi-Jukebox-RFID
+WorkingDirectory=/home/phonie/phoniebox
 ExecStart=/home/phonie/phoniebox/components/displays/HD44780-i2c/i2c_lcd.py
 
 [Install]

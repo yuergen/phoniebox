@@ -7,7 +7,7 @@ User=phonie
 Group=phonie
 Type=oneshot
 RemainAfterExit=true
-WorkingDirectory=/home/pi/RPi-Jukebox-RFID
+WorkingDirectory=/home/phonie/phoniebox
 ExecStart=/bin/bash /home/phonie/phoniebox/scripts/startup-scripts.sh
 
 [Install]
