@@ -768,7 +768,9 @@ install_main() {
     . "${HOME_DIR}/${CONF_FILENAME}"
 
     # power management of wifi: switch off to avoid disconnecting
-    sudo iwconfig wlan0 power off
+    if [ "${WIFIconfig}" == "YES" ]; then
+      sudo iwconfig wlan0 power off
+    fi
 
     # create backup of /etc/resolv.conf
     sudo cp /etc/resolv.conf /etc/resolv.conf.orig
