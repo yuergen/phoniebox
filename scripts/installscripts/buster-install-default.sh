@@ -819,7 +819,7 @@ install_main() {
     COMMIT_NO="$(git --git-dir=${jukebox_dir}/.git describe --always)"
 
     echo "${VERSION_NO} - ${COMMIT_NO} - ${USED_BRANCH}" > ${jukebox_dir}/settings/version
-    chmod 777 ${jukebox_dir}/settings/version
+    chmod 644 ${jukebox_dir}/settings/version
 
     # Install required spotify packages
     if [ "${SPOTinstall}" == "YES" ]; then
