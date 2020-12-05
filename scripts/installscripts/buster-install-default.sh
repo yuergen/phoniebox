@@ -892,12 +892,12 @@ install_main() {
     sudo systemctl disable gpio-buttons
     sudo systemctl disable phoniebox-rotary-encoder
     sudo systemctl disable phoniebox-gpio-buttons.service
-    sudo rm "${systemd_dir}"/rfid-reader.service
-    sudo rm "${systemd_dir}"/startup-sound.service
-    sudo rm "${systemd_dir}"/gpio-buttons.service
-    sudo rm "${systemd_dir}"/idle-watchdog.service
-    sudo rm "${systemd_dir}"/phoniebox-rotary-encoder.service
-    sudo rm "${systemd_dir}"/phoniebox-gpio-buttons.service
+    if [ -f "/rfid-reader.service" ]; then sudo rm "${systemd_dir}"/rfid-reader.service; fi;
+    if [ -f "/startup-sound.service" ]; then sudo rm "${systemd_dir}"/startup-sound.service; fi;
+    if [ -f "/gpio-buttons.service" ]; then sudo rm "${systemd_dir}"/gpio-buttons.service; fi;
+    if [ -f "/idle-watchdog.service" ]; then sudo rm "${systemd_dir}"/idle-watchdog.service; fi;
+    if [ -f "/phoniebox-rotary-encoder.service" ]; then sudo rm "${systemd_dir}"/phoniebox-rotary-encoder.service; fi;
+    if [ -f "/phoniebox-gpio-buttons.service" ]; then sudo rm "${systemd_dir}"/phoniebox-gpio-buttons.service; fi;
     echo "### Done with erasing old daemons. Stop ignoring errors!"
     # 2. install new ones - this is version > 1.1.8-beta
     sudo cp "${jukebox_dir}"/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample "${systemd_dir}"/phoniebox-rfid-reader.service
