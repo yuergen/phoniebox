@@ -4,8 +4,8 @@ After=network.target iptables.service firewalld.service
 
 [Service]
 Type=simple
-User=pi
-Group=pi
+User=phonie
+Group=phonie
 WorkingDirectory=/home/phonie/phoniebox/components/gpio_control/
 ExecStart=/home/phonie/phoniebox/components/gpio_control/gpio_control.py
 SyslogIdentifier=PhonieboxGPIOControl

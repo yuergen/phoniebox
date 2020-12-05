@@ -3,8 +3,8 @@ Description=Phoniebox Aplifier Activation Service
 After=network.target iptables.service firewalld.service
 
 [Service]
-User=pi
-Group=pi
+User=phonie
+Group=phonie
 Restart=always
 WorkingDirectory=/home/pi/RPi-Jukebox-RFID
 ExecStart=/home/phonie/phoniebox/scripts/activate_amplifier.py

@@ -3,8 +3,8 @@ Description=Phoniebox Startup
 After=mpd.service
 
 [Service]
-User=pi
-Group=pi
+User=phonie
+Group=phonie
 Type=oneshot
 RemainAfterExit=true
 WorkingDirectory=/home/pi/RPi-Jukebox-RFID

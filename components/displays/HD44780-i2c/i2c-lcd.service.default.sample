@@ -1,10 +1,10 @@
-[Unit]  
+[Unit]
 Description=LCD Matrix Display Service
 After=network.target phoniebox-rfid-reader.service
 
 [Service]
-User=pi
-Group=pi
+User=phonie
+Group=phonie
 Restart=always
 WorkingDirectory=/home/pi/RPi-Jukebox-RFID
 ExecStart=/home/phonie/phoniebox/components/displays/HD44780-i2c/i2c_lcd.py
