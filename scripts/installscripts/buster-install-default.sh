@@ -208,7 +208,7 @@ case "$response" in
         echo "WIFIcountryCode=DE" >> "${HOME_DIR}/${CONF_FILENAME}"
         ;;
 esac
-read -rp "Hit ENTER to proceed to the next step." INPUT
+#read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 check_existing() {
@@ -275,7 +275,7 @@ check_existing() {
                     sudo chmod 775 "${HOME_DIR}"/${CONF_FILENAME}
                     echo "The existing configuration will be used."
                     echo "Just a few more questions to answer."
-                    read -rp "Hit ENTER to proceed to the next step." INPUT
+                    #read -rp "Hit ENTER to proceed to the next step." INPUT
                     #clear
                     ;;
             esac
@@ -288,7 +288,7 @@ check_existing() {
                 EXISTINGuse=NO
                 echo "Phoniebox will be a fresh install. The existing version will be dropped."
                 sudo rm -rf "${jukebox_dir}"
-                read -rp "Hit ENTER to proceed to the next step." INPUT
+                #read -rp "Hit ENTER to proceed to the next step." INPUT
                 ;;
             *)
                 EXISTINGuse=YES
@@ -374,7 +374,7 @@ check_existing() {
 The configuration of GPIO-Devices has changed in the new version
 and needs to be reconfigured. For further info check out the wiki:
 https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons"
-                    read -rp "Hit ENTER to proceed to the next step." INPUT
+                    #read -rp "Hit ENTER to proceed to the next step." INPUT
                     config_gpio
                 fi
                 # append variables to config file
@@ -382,7 +382,7 @@ https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons"
 
                 echo "Thanks. Got it."
                 echo "The existing install can be found in the BACKUP directory."
-                read -rp "Hit ENTER to proceed to the next step." INPUT
+                #read -rp "Hit ENTER to proceed to the next step." INPUT
                 ;;
         esac
     fi
@@ -437,7 +437,7 @@ config_audio_interface() {
     # append variables to config file
     echo "AUDIOiFace=\"$AUDIOiFace\"" >> "${HOME_DIR}/${CONF_FILENAME}"
     echo "Your iFace is called'$AUDIOiFace'"
-    read -rp "Hit ENTER to proceed to the next step." INPUT
+    #read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 config_spotify() {
@@ -504,7 +504,7 @@ config_spotify() {
         echo "SPOTIclientid=\"$SPOTIclientid\"";
         echo "SPOTIclientsecret=\"$SPOTIclientsecret\""
     } >> "${HOME_DIR}/${CONF_FILENAME}"
-    read -rp "Hit ENTER to proceed to the next step." INPUT
+    #read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 config_mpd() {
@@ -534,7 +534,7 @@ config_mpd() {
     esac
     # append variables to config file
     echo "MPDconfig=\"$MPDconfig\"" >> "${HOME_DIR}/${CONF_FILENAME}"
-    read -rp "Hit ENTER to proceed to the next step." INPUT
+    #read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 config_audio_folder() {
@@ -575,7 +575,7 @@ config_audio_folder() {
     echo "DIRaudioFolders=\"$DIRaudioFolders\"" >> "${HOME_DIR}/${CONF_FILENAME}"
     echo "Your audio folders live in this dir:"
     echo "${DIRaudioFolders}"
-    read -rp "Hit ENTER to proceed to the next step." INPUT
+    #read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 check_variable() {
@@ -615,7 +615,7 @@ config_gpio() {
     # append variables to config file
     echo "GPIOconfig=\"$GPIOconfig\"" >> "${HOME_DIR}/${CONF_FILENAME}"
     echo ""
-    read -rp "Hit ENTER to proceed to the next step." INPUT
+    #read -rp "Hit ENTER to proceed to the next step." INPUT
 }
 
 check_config_file() {
