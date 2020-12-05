@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-HOME_DIR="/home/pi"
-JUKEBOX_HOME_DIR="${HOME_DIR}/RPi-Jukebox-RFID"
+JUKEBOX_HOME_DIR=$1
 
 question() {
     local question=$1
