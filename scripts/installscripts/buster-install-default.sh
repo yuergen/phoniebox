@@ -29,6 +29,7 @@ SCRIPTNAME="$(basename $0)"
 JOB="${SCRIPTNAME}"
 
 USER_NAME="phonie"
+USER_SMB_PASSWORD="changeme"
 GROUP_NAME="www-data"
 HOME_DIR="/home/${USER_NAME}"
 
@@ -681,7 +682,7 @@ samba_config() {
     # for $DIRaudioFolders using | as alternate regex delimiter because of the folder path slash
     sudo sed -i 's|%DIRaudioFolders%|'"$DIRaudioFolders"'|' "${smb_conf}"
     # Samba: create user 'pi' with password 'raspberry'
-    (echo "raspberry"; echo "raspberry") | sudo smbpasswd -s -a pi
+    (echo "${USER_SMB_PASSWORD}"; echo "${USER_SMB_PASSWORD}") | sudo smbpasswd -s -a "${USER_NAME}"
 }
 
 web_server_config() {
