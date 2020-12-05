@@ -786,25 +786,52 @@ install_main() {
     # Generate locales
     sudo locale-gen "${LANG}"
 
-    # Install required packages
-    ${apt_get} ${allow_downgrades} install apt-transport-https
+    #Build package list:
+    packages=""
+    packages="${packages} apt-transport-https
 
     ${apt_get} update
     ${apt_get} upgrade
-    ${apt_get} install libspotify-dev
+    if [ "${SPOTinstall}" == "YES" ]; then
+      packages="${packages} libspotify-dev"
+    fi
 
     # some packages are only available on raspberry pi's but not on test docker containers running on x86_64 machines
     if [[ $(uname -m) =~ ^armv.+$ ]]; then
-        ${apt_get} ${allow_downgrades} install raspberrypi-kernel-headers
+        packages="${packages} raspberrypi-kernel-headers"
     fi
 
-    ${apt_get} ${allow_downgrades} install samba samba-common-bin gcc lighttpd php${PHP_VERSION}-common php${PHP_VERSION}-cgi php${PHP_VERSION} at mpd mpc mpg123 git ffmpeg resolvconf spi-tools netcat
+    packages="${packages} samba samba-common-bin gcc lighttpd php${PHP_VERSION}-common php${PHP_VERSION}-cgi php${PHP_VERSION} at mpd mpc mpg123 git ffmpeg spi-tools netcat"
 
     # restore backup of /etc/resolv.conf in case installation of resolvconf cleared it
     sudo cp /etc/resolv.conf.orig /etc/resolv.conf
 
     # prepare python3
-    ${apt_get} ${allow_downgrades} install python3 python3-dev python3-pip python3-mutagen python3-gpiozero python3-spidev
+    packages="${packages} python3 python3-dev python3-pip python3-mutagen python3-gpiozero"
+    #packages="${packages} python3-spidev"
+
+    # Install required spotify packages
+    if [ "${SPOTinstall}" == "YES" ]; then
+        echo "Installing dependencies for Spotify support..."
+        # keep major verson 3 of mopidy
+        echo -e "Package: mopidy\nPin: version 3.*\nPin-Priority: 1001" | sudo tee /etc/apt/preferences.d/mopidy
+
+        wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
+        sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
+        packages="${packages} mopidy mopidy-mpd mopidy-local mopidy-spotify"
+        packages="${packages} libspotify12 python${PYTHON_MAJOR_VERSION}-cffi python${PYTHON_MAJOR_VERSION}-ply python${PYTHON_MAJOR_VERSION}-pycparser python${PYTHON_MAJOR_VERSION}-spotify"
+    fi
+
+    # Install more required packages
+    echo "Installing additional Python packages via pip..."
+    sudo python${PYTHON_MAJOR_VERSION} -m pip install --upgrade --force-reinstall -q -r "${jukebox_dir}"/requirements.txt
+
+    if [ "${SPOTinstall}" == "YES" ]; then
+        echo "Installing additional Python packages for spotify via pip..."
+        sudo python${PYTHON_MAJOR_VERSION} -m pip install --upgrade --force-reinstall -q -r "${jukebox_dir}"/requirements-spotify.txt
+    fi
+
+    ${apt_get} ${allow_downgrades} install ${packages}
 
     # use python3.7 as default
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} 1
@@ -822,27 +849,6 @@ install_main() {
 
     echo "${VERSION_NO} - ${COMMIT_NO} - ${USED_BRANCH}" > ${jukebox_dir}/settings/version
     chmod 644 ${jukebox_dir}/settings/version
-
-    # Install required spotify packages
-    if [ "${SPOTinstall}" == "YES" ]; then
-        echo "Installing dependencies for Spotify support..."
-        # keep major verson 3 of mopidy
-        echo -e "Package: mopidy\nPin: version 3.*\nPin-Priority: 1001" | sudo tee /etc/apt/preferences.d/mopidy
-
-        wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
-        sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
-        ${apt_get} update
-        ${apt_get} upgrade
-        ${apt_get} ${allow_downgrades} install mopidy mopidy-mpd mopidy-local mopidy-spotify
-        ${apt_get} ${allow_downgrades} install libspotify12 python3-cffi python3-ply python3-pycparser python3-spotify
-
-        # Install necessary Python packages
-        sudo python3 -m pip install --upgrade --force-reinstall -q -r "${jukebox_dir}"/requirements-spotify.txt
-    fi
-
-    # Install more required packages
-    echo "Installing additional Python packages..."
-    sudo python3 -m pip install --upgrade --force-reinstall -q -r "${jukebox_dir}"/requirements.txt
 
     samba_config
 
