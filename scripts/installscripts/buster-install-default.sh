@@ -857,6 +857,7 @@ install_main() {
     echo "100" > "${jukebox_dir}"/settings/Max_Volume_Limit
     echo "0" > "${jukebox_dir}"/settings/Idle_Time_Before_Shutdown
     echo "RESTART" > "${jukebox_dir}"/settings/Second_Swipe
+    echo "ON" > "${jukebox_dir}"/settings/Second_Swipe_Pause_Controls
     echo "${jukebox_dir}/playlists" > "${jukebox_dir}"/settings/Playlists_Folders_Path
     echo "ON" > "${jukebox_dir}"/settings/ShowCover
 
