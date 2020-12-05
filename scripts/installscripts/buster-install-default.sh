@@ -1181,7 +1181,7 @@ finish_installation() {
                         break
                         ;;
                     "RC522")
-                        bash "${jukebox_dir}"/components/rfid-reader/RC522/setup_rc522.sh "${jukebox_dir}"
+                        bash "${jukebox_dir}"/components/rfid-reader/RC522/setup_rc522.sh "${jukebox_dir}" "${USER_NAME}" "${GROUP_NAME}"
                         break
                         ;;
                     "PN532")
