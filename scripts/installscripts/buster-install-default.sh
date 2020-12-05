@@ -767,6 +767,13 @@ install_main() {
     # shellcheck source=scripts/installscripts/tests/ShellCheck/${CONF_FILENAME}
     . "${HOME_DIR}/${CONF_FILENAME}"
 
+    # Get github code
+    if [ ! -d ${JUKEBOX_HOME_DIR} ]; then
+      mkdir -p ${JUKEBOX_HOME_DIR}
+    fi
+    cd "${JUKEBOX_HOME_DIR}" || exit
+    git clone ${GIT_URL} --branch "${GIT_BRANCH}" ./
+
     # power management of wifi: switch off to avoid disconnecting
     if [ "${WIFIconfig}" == "YES" ]; then
       sudo iwconfig wlan0 power off
@@ -800,13 +807,6 @@ install_main() {
 
     # use python3.7 as default
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} 1
-
-    # Get github code
-    if [ ! -d ${JUKEBOX_HOME_DIR} ]; then
-      mkdir -p ${JUKEBOX_HOME_DIR}
-    fi
-    cd "${JUKEBOX_HOME_DIR}" || exit
-    git clone ${GIT_URL} --branch "${GIT_BRANCH}" ./
 
     # VERSION of installation
 
