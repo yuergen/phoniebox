@@ -2,7 +2,7 @@
 
 In order to make the Phoniebox more resilient against sudden power loss a mostly read-only filesystem helps against filesystem corruption.
 
-First we need to mount a read-write Partition to /home/pi/RPi-Jukebox-RFID/shared/. This can bei either a further partition on the SD 
+First we need to mount a read-write Partition to /home/phonie/phoniebox/shared/. This can bei either a further partition on the SD 
 card or an USB drive connected to the Pi. If you want to store the shared partition on the sd card you need to first resize the main
 partition. In a normal raspbian install there is one small partition and one that fills the rest of the card. There is a good HOWTO on how 
 to resize the partition here: https://www.howtoforge.com/partitioning_with_gparted
@@ -30,7 +30,7 @@ pi@JukeboxJan:~/RPi-Jukebox-RFID $ blkid
 In order to mount the rw partition to ~/RPi-Jukebox-RFID/shared/ on bootup you need to add the following line to /etc/fstab Replace the PARTUUID with teh one from your output. (Don't forget you need to ```sudo vi /etc/fstab``` to edit the file)
 
 ```
-PARTUUID="9282f822-03" /home/pi/RPi-Jukebox-RFID/shared ext4 defaults,noatime 0 2 
+PARTUUID="9282f822-03" /home/phonie/phoniebox/shared ext4 defaults,noatime 0 2 
 ```
 
 ```sudo mount -a``` will mount the new partition to its mountpoint. 

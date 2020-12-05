@@ -182,7 +182,7 @@ if [ "$CARDID" ]; then
             # play previous track in playlist
             # echo "prev" | nc.openbsd -w 1 localhost 4212
             sudo $PATHDATA/playout_controls.sh -c=playerprev
-            #/usr/bin/sudo /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh -c=playerprev
+            #/usr/bin/sudo /home/phonie/phoniebox/scripts/playout_controls.sh -c=playerprev
             ;;
         $CMDREWIND)
             # play the first track in playlist

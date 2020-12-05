@@ -18,22 +18,22 @@ echo "Proceeding and deleting."
 #sudo rm /etc/samba/smb.conf
 
 # these ones we will leave
-#sudo rm /home/pi/RPi-Jukebox-RFID/htdocs/config.php
-#sudo rm /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf
+#sudo rm /home/phonie/phoniebox/htdocs/config.php
+#sudo rm /home/phonie/phoniebox/settings/rfid_trigger_play.conf
 
 # these ones we delete
 sudo rm /etc/lighttpd/lighttpd.conf
 sudo rm /etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo rm /etc/php/7.0/fpm/php.ini
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Audio_iFace_Name
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Audio_Folders_Path
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Audio_Volume_Change_Step
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Max_Volume_Limit
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Idle_Time_Before_Shutdown
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Second_Swipe
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/Playlists_Folders_Path
-sudo rm /home/pi/RPi-Jukebox-RFID/settings/ShowCover
-sudo rm /home/pi/RPi-Jukebox-RFID/scripts/gpio-buttons.py
+sudo rm /home/phonie/phoniebox/settings/Audio_iFace_Name
+sudo rm /home/phonie/phoniebox/settings/Audio_Folders_Path
+sudo rm /home/phonie/phoniebox/settings/Audio_Volume_Change_Step
+sudo rm /home/phonie/phoniebox/settings/Max_Volume_Limit
+sudo rm /home/phonie/phoniebox/settings/Idle_Time_Before_Shutdown
+sudo rm /home/phonie/phoniebox/settings/Second_Swipe
+sudo rm /home/phonie/phoniebox/settings/Playlists_Folders_Path
+sudo rm /home/phonie/phoniebox/settings/ShowCover
+sudo rm /home/phonie/phoniebox/scripts/gpio-buttons.py
 sudo rm /etc/systemd/system/phoniebox-rfid-reader.service 
 sudo rm /etc/systemd/system/phoniebox-startup-sound.service
 sudo rm /etc/systemd/system/phoniebox-gpio-buttons.service

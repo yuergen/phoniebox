@@ -533,7 +533,7 @@ config_audio_folder() {
 
     #####################################################
     # Folder path for audio files
-    # default: /home/pi/RPi-Jukebox-RFID/shared/audiofolders
+    # default: /home/phonie/phoniebox/shared/audiofolders
 
     clear
 
@@ -1377,7 +1377,7 @@ main() {
     else
         echo "Skipping USB device setup..."
         echo "For manual registration of a USB card reader type:"
-        echo "python3 /home/pi/RPi-Jukebox-RFID/scripts/RegisterDevice.py"
+        echo "python3 /home/phonie/phoniebox/scripts/RegisterDevice.py"
         echo " "
         echo "Reboot is required to activate all settings!"
     fi

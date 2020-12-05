@@ -989,10 +989,10 @@ case $COMMAND in
     readwifiipoverspeaker)
         # will read out the IP address over the Pi's speaker.
         # Why? Imagine to go to a new wifi, hook up and not know where to point your browser
-        cd /home/pi/RPi-Jukebox-RFID/misc/
+        cd /home/phonie/phoniebox/misc/
         # delete older mp3 (in case process was interrupted)
         sudo rm WifiIp.mp3
-        /usr/bin/php /home/pi/RPi-Jukebox-RFID/scripts/helperscripts/cli_ReadWifiIp.php
+        /usr/bin/php /home/phonie/phoniebox/scripts/helperscripts/cli_ReadWifiIp.php
         ;;
     *)
         echo Unknown COMMAND $COMMAND VALUE $VALUE

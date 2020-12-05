@@ -69,7 +69,7 @@ Check if "n_cols" and "n_rows" need to be changed and modify them if necessary. 
 
 * next install and start "i2c-lcd.service"
 
-`sudo cp /home/pi/RPi-Jukebox-RFID/components/displays/HD44780-i2c/i2c-lcd.service.default.sample /etc/systemd/system/i2c-lcd.service`
+`sudo cp /home/phonie/phoniebox/components/displays/HD44780-i2c/i2c-lcd.service.default.sample /etc/systemd/system/i2c-lcd.service`
 
 * register service by running, it will thereby start on the next boot-up
 

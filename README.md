@@ -158,7 +158,7 @@ and post the results when reporting a bug.
 (Note: the results contain some personal information like IP or SSID.
 You might want to erase some of it before sharing with the bug report.)
 ~~~
-/home/pi/RPi-Jukebox-RFID/scripts/helperscripts/Analytics_AfterInstallScript.sh 
+/home/phonie/phoniebox/scripts/helperscripts/Analytics_AfterInstallScript.sh 
 ~~~
 Just copy this line and paste it into your terminal on the pi.
 

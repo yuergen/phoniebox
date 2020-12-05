@@ -22,7 +22,7 @@ This is a work in progress so expect things to fail or being flaky.
 * clone this repo and cd into its local clone:
 ```
       git clone https://github.com/MiczFlor/RPi-Jukebox-RFID.git
-      cd /home/pi/RPi-Jukebox-RFID/
+      cd /home/phonie/phoniebox/
 ```
 * build the docker image:
     * **on normal PCs:**
@@ -57,7 +57,7 @@ container:
 
 ```
     git clone https://github.com/MiczFlor/RPi-Jukebox-RFID.git
-    cd /home/pi/RPi-Jukebox-RFID/
+    cd /home/phonie/phoniebox/
     docker build -t rpi-jukebox-rfid-buster:latest -f ci/Dockerfile .
     docker run --rm -ti -w /code -v $PWD:/code rpi-jukebox-rfid-buster:latest /bin/bash
 

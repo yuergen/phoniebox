@@ -19,8 +19,8 @@
 */
 
 $conf = array();
-$conf['path2shortcuts'] = "/home/pi/RPi-Jukebox-RFID/shared/shortcuts"; // no trailing slash
-$conf['path2csvtarget'] = "/home/pi/RPi-Jukebox-RFID/misc/shortcuts-backup.csv"; // absolute path to target
+$conf['path2shortcuts'] = "/home/phonie/phoniebox/shared/shortcuts"; // no trailing slash
+$conf['path2csvtarget'] = "/home/phonie/phoniebox/misc/shortcuts-backup.csv"; // absolute path to target
 
 
 // read the shortcuts used

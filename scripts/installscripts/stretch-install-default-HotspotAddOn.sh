@@ -72,24 +72,24 @@ then
     sudo systemctl disable dnsmasq
     
     # -rw-r--r-- 1 root root 345 Aug 13 17:55 /etc/hostapd/hostapd.conf
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/hostapd.conf.stretch-default2-Hotspot.sample /etc/hostapd/hostapd.conf
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/hostapd.conf.stretch-default2-Hotspot.sample /etc/hostapd/hostapd.conf
     sudo sed -i 's/%WIFIcountryCode%/'"$WIFIcountryCode"'/' /etc/hostapd/hostapd.conf
     sudo chmod 644 /etc/hostapd/hostapd.conf
     sudo chown root:root /etc/hostapd/hostapd.conf
     
     # -rw-r--r-- 1 root root 794 Aug 13 18:40 /etc/default/hostapd
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/hostapd.stretch-default2-Hotspot.sample /etc/default/hostapd
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/hostapd.stretch-default2-Hotspot.sample /etc/default/hostapd
     sudo chmod 644 /etc/default/hostapd
     sudo chown root:root /etc/default/hostapd
     
     # -rw-r--r-- 1 root root 82 Jul 17 15:13 /etc/network/interfaces
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/interfaces.stretch-default2-Hotspot.sample /etc/network/interfaces
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/interfaces.stretch-default2-Hotspot.sample /etc/network/interfaces
     sudo chmod 644 /etc/network/interfaces
     sudo chown root:root /etc/network/interfaces
     
     # DHCP configuration settings
     #-rw-rw-r-- 1 root netdev 0 Apr 17 11:25 /etc/dhcpcd.conf
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/dhcpcd.conf.stretch-default2-Hotspot.sample /etc/dhcpcd.conf
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/dhcpcd.conf.stretch-default2-Hotspot.sample /etc/dhcpcd.conf
     # Change IP for router and Phoniebox
     sudo sed -i 's/%WIFIip%/'"$WIFIip"'/' /etc/dhcpcd.conf
     sudo sed -i 's/%WIFIipRouter%/'"$WIFIipRouter"'/' /etc/dhcpcd.conf
@@ -99,13 +99,13 @@ then
     sudo chmod 664 /etc/dhcpcd.conf
     
     # /usr/bin/autohotspot
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/autohotspot.stretch-default2-Hotspot.sample /usr/bin/autohotspot
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/autohotspot.stretch-default2-Hotspot.sample /usr/bin/autohotspot
     sudo chown root:root /usr/bin/autohotspot
     sudo chmod 644 /usr/bin/autohotspot
     sudo chmod +x /usr/bin/autohotspot
     
     # /etc/systemd/system/autohotspot.service
-    sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/autohotspot.service.stretch-default2-Hotspot.sample /etc/systemd/system/autohotspot.service
+    sudo cp /home/phonie/phoniebox/misc/sampleconfigs/autohotspot.service.stretch-default2-Hotspot.sample /etc/systemd/system/autohotspot.service
     sudo chown root:root /etc/systemd/system/autohotspot.service
     sudo chmod 644 /etc/systemd/system/autohotspot.service
     sudo systemctl enable autohotspot.service

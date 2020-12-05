@@ -49,7 +49,7 @@ fi
 # Path to folder containing audio / streams
 # 1. create a default if file does not exist
 if [ ! -f $PATHDATA/../settings/Audio_Folders_Path ]; then
-    echo "/home/pi/RPi-Jukebox-RFID/shared/audiofolders" > $PATHDATA/../settings/Audio_Folders_Path
+    echo "/home/phonie/phoniebox/shared/audiofolders" > $PATHDATA/../settings/Audio_Folders_Path
     chmod 777 $PATHDATA/../settings/Audio_Folders_Path
 fi
 # 2. then|or read value from file
@@ -58,7 +58,7 @@ AUDIOFOLDERSPATH=`cat $PATHDATA/../settings/Audio_Folders_Path`
 # Path to folder containing playlists
 # 1. create a default if file does not exist
 if [ ! -f $PATHDATA/../settings/Playlists_Folders_Path ]; then
-    echo "/home/pi/RPi-Jukebox-RFID/playlists" > $PATHDATA/../settings/Playlists_Folders_Path
+    echo "/home/phonie/phoniebox/playlists" > $PATHDATA/../settings/Playlists_Folders_Path
     chmod 777 $PATHDATA/../settings/Playlists_Folders_Path
 fi
 # 2. then|or read value from file

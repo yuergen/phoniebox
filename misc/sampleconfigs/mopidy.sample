@@ -104,7 +104,7 @@ hostname = 0.0.0.0
 #base_dir = $XDG_MUSIC_DIR
 default_encoding = UTF-8
 default_extension = .m3u
-playlists_dir = /home/pi/RPi-Jukebox-RFID/playlists
+playlists_dir = /home/phonie/phoniebox/playlists
 
 [softwaremixer]
 #enabled = true

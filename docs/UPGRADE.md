@@ -39,9 +39,9 @@ PASSWORD=$(sudo grep 'password' /etc/mopidy/mopidy.conf|sed 's/password = //g'|s
 CLIENT_ID=$(sudo grep 'client_id' /etc/mopidy/mopidy.conf|sed 's/client_id = //g'|sed 's/"//g'|tr -d "\n")
 CLIENT_SECRET=$(sudo grep 'client_secret' /etc/mopidy/mopidy.conf|sed 's/client_secret = //g'|sed 's/"//g'|tr -d "\n")
 
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/mpd.conf.sample /etc/mpd.conf
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/mopidy-etc.sample /etc/mopidy/mopidy.conf
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/mopidy.sample /home/pi/.config/mopidy/mopidy.conf
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/mpd.conf.sample /etc/mpd.conf
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/mopidy-etc.sample /etc/mopidy/mopidy.conf
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/mopidy.sample /home/pi/.config/mopidy/mopidy.conf
 
 sudo sed -i 's/%spotify_username%/'"$USERNAME"'/' /etc/mopidy/mopidy.conf
 sudo sed -i 's/%spotify_password%/'"$PASSWORD"'/' /etc/mopidy/mopidy.conf
@@ -66,10 +66,10 @@ sudo rm /etc/systemd/system/gpio-buttons.service
 sudo rm /etc/systemd/system/idle-watchdog.service
 echo "### Done with erasing old daemons. Stop ignoring errors!" 
 # 2. install new ones - this is version > 1.1.8-beta
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-startup-sound.service.stretch-default.sample /etc/systemd/system/phoniebox-startup-sound.service
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-gpio-buttons.service.stretch-default.sample /etc/systemd/system/phoniebox-gpio-buttons.service
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-idle-watchdog.service.sample /etc/systemd/system/phoniebox-idle-watchdog.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-startup-sound.service.stretch-default.sample /etc/systemd/system/phoniebox-startup-sound.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-gpio-buttons.service.stretch-default.sample /etc/systemd/system/phoniebox-gpio-buttons.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-idle-watchdog.service.sample /etc/systemd/system/phoniebox-idle-watchdog.service
 sudo chown root:root /etc/systemd/system/phoniebox-rfid-reader.service
 sudo chown root:root /etc/systemd/system/phoniebox-startup-sound.service
 sudo chown root:root /etc/systemd/system/phoniebox-gpio-buttons.service
@@ -84,8 +84,8 @@ sudo systemctl enable phoniebox-rfid-reader
 sudo systemctl enable phoniebox-startup-sound
 sudo systemctl enable phoniebox-gpio-buttons
 
-echo "classic" > /home/pi/RPi-Jukebox-RFID/settings/edition
-EDITION=$(grep 'SPOTinstall' /home/pi/PhonieboxInstall.conf|sed 's/SPOTinstall="//g'|sed 's/"//g'); if [ $EDITION == "YES" ]; then echo "plusSpotify"; else echo "classic"; fi > /home/pi/RPi-Jukebox-RFID/settings/edition
+echo "classic" > /home/phonie/phoniebox/settings/edition
+EDITION=$(grep 'SPOTinstall' /home/pi/PhonieboxInstall.conf|sed 's/SPOTinstall="//g'|sed 's/"//g'); if [ $EDITION == "YES" ]; then echo "plusSpotify"; else echo "classic"; fi > /home/phonie/phoniebox/settings/edition
 
 sudo apt-get install libspotify12 python-cffi python-ply python-pycparser python-spotify
 sudo rm -rf /usr/lib/python2.7/dist-packages/mopidy_spotify*
@@ -131,13 +131,13 @@ git checkout master
 git fetch origin
 git reset --hard origin/master
 git pull
-sudo chown -R pi:www-data /home/pi/RPi-Jukebox-RFID/shared
-sudo chmod -R 775 /home/pi/RPi-Jukebox-RFID/shared
-sudo chown -R pi:www-data /home/pi/RPi-Jukebox-RFID/htdocs
-sudo chmod -R 775 /home/pi/RPi-Jukebox-RFID/htdocs
-sudo chown -R pi:www-data /home/pi/RPi-Jukebox-RFID/settings
-sudo chmod -R 777 /home/pi/RPi-Jukebox-RFID/settings
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
+sudo chown -R pi:www-data /home/phonie/phoniebox/shared
+sudo chmod -R 775 /home/phonie/phoniebox/shared
+sudo chown -R pi:www-data /home/phonie/phoniebox/htdocs
+sudo chmod -R 775 /home/phonie/phoniebox/htdocs
+sudo chown -R pi:www-data /home/phonie/phoniebox/settings
+sudo chmod -R 777 /home/phonie/phoniebox/settings
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
 sudo chown root:root /etc/systemd/system/phoniebox-rfid-reader.service
 sudo chmod 644 /etc/systemd/system/phoniebox-rfid-reader.service
 sudo systemctl enable rfid-reader
@@ -156,7 +156,7 @@ git pull
 # make backup
 sudo cp /etc/php/7.0/fpm/php.ini /etc/php/7.0/fpm/php.ini.backup
 # replace file
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/php.ini.stretch-default.sample /etc/php/7.0/fpm/php.ini
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/php.ini.stretch-default.sample /etc/php/7.0/fpm/php.ini
 sudo chown root:root /etc/php/7.0/fpm/php.ini
 sudo chmod 644 /etc/php/7.0/fpm/php.ini
 sudo service lighttpd force-reload
@@ -177,11 +177,11 @@ As of version 1.0 there is a much simpler install procedure: copy and paste one 
 * Web app enhancements (audio level, display 'playing now')
 ~~~
 # services to launch after boot using systmed
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-idle-watchdog.service.sample /etc/systemd/system/phoniebox-idle-watchdog.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-idle-watchdog.service.sample /etc/systemd/system/phoniebox-idle-watchdog.service
 sudo chown root:root /etc/systemd/system/phoniebox-idle-watchdog.service
 sudo chmod 644 /etc/systemd/system/phoniebox-idle-watchdog.service
 # the config file where you can add the minutes after which Phoniebox shuts down
-echo "0" > /home/pi/RPi-Jukebox-RFID/settings/Idle_Time_Before_Shutdown
+echo "0" > /home/phonie/phoniebox/settings/Idle_Time_Before_Shutdown
 # enable and start the service
 sudo systemctl enable phoniebox-idle-watchdog.service
 sudo systemctl start phoniebox-idle-watchdog.service
@@ -194,19 +194,19 @@ sudo systemctl start phoniebox-idle-watchdog.service
 
 ~~~
 # make backups of the current scripts
-mv /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh.backup.0.9.4
-mv /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh.backup.0.9.4
-rm /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh.sample
-rm /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh.sample
-cp /home/pi/RPi-Jukebox-RFID/htdocs/config.php /home/pi/RPi-Jukebox-RFID/htdocs/config.php.backup.0.9.4
+mv /home/phonie/phoniebox/scripts/rfid_trigger_play.sh /home/phonie/phoniebox/scripts/rfid_trigger_play.sh.backup.0.9.4
+mv /home/phonie/phoniebox/scripts/playout_controls.sh /home/phonie/phoniebox/scripts/playout_controls.sh.backup.0.9.4
+rm /home/phonie/phoniebox/scripts/rfid_trigger_play.sh.sample
+rm /home/phonie/phoniebox/scripts/playout_controls.sh.sample
+cp /home/phonie/phoniebox/htdocs/config.php /home/phonie/phoniebox/htdocs/config.php.backup.0.9.4
 # update with git
 git checkout master
 git pull
 # copy config file for RFID chips from sample to "live"
 # you need to manually edit the created files and add the values from the backup version of `scripts/rfid_trigger_play.sh`
-cp /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf.sample /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf
-sudo chown pi:pi /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf
-sudo chmod 775 /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf
+cp /home/phonie/phoniebox/settings/rfid_trigger_play.conf.sample /home/phonie/phoniebox/settings/rfid_trigger_play.conf
+sudo chown pi:pi /home/phonie/phoniebox/settings/rfid_trigger_play.conf
+sudo chmod 775 /home/phonie/phoniebox/settings/rfid_trigger_play.conf
 ~~~
 
 # Upgrade to 0.9.4
@@ -214,32 +214,32 @@ sudo chmod 775 /home/pi/RPi-Jukebox-RFID/settings/rfid_trigger_play.conf
 * OS 'Stretch' and 'Jessie' require different `lighttpd.conf` parameters. Samples can be found in `misc/sampleconfigs`
 ~~~
 # make backups of the current scripts
-cp /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh.backup.0.9.3
-cp /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh.backup.0.9.3
-cp /home/pi/RPi-Jukebox-RFID/htdocs/config.php /home/pi/RPi-Jukebox-RFID/htdocs/config.php.backup.0.9.3
+cp /home/phonie/phoniebox/scripts/rfid_trigger_play.sh /home/phonie/phoniebox/scripts/rfid_trigger_play.sh.backup.0.9.3
+cp /home/phonie/phoniebox/scripts/playout_controls.sh /home/phonie/phoniebox/scripts/playout_controls.sh.backup.0.9.3
+cp /home/phonie/phoniebox/htdocs/config.php /home/phonie/phoniebox/htdocs/config.php.backup.0.9.3
 # update with git
 git checkout master
 git pull
 # copy shell script for player
-cp /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh.sample /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh
-sudo chown pi:pi /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh
-sudo chmod 775 /home/pi/RPi-Jukebox-RFID/scripts/rfid_trigger_play.sh
+cp /home/phonie/phoniebox/scripts/rfid_trigger_play.sh.sample /home/phonie/phoniebox/scripts/rfid_trigger_play.sh
+sudo chown pi:pi /home/phonie/phoniebox/scripts/rfid_trigger_play.sh
+sudo chmod 775 /home/phonie/phoniebox/scripts/rfid_trigger_play.sh
 # copy bash script for player controls
-cp /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh.sample /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh
-sudo chown pi:pi /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh
-sudo chmod 775 /home/pi/RPi-Jukebox-RFID/scripts/playout_controls.sh
+cp /home/phonie/phoniebox/scripts/playout_controls.sh.sample /home/phonie/phoniebox/scripts/playout_controls.sh
+sudo chown pi:pi /home/phonie/phoniebox/scripts/playout_controls.sh
+sudo chmod 775 /home/phonie/phoniebox/scripts/playout_controls.sh
 # create config file for web app from sample
-sudo cp /home/pi/RPi-Jukebox-RFID/htdocs/config.php.sample /home/pi/RPi-Jukebox-RFID/htdocs/config.php
+sudo cp /home/phonie/phoniebox/htdocs/config.php.sample /home/phonie/phoniebox/htdocs/config.php
 # make sure the shared folder is accessible by the web server
-sudo chown -R pi:www-data /home/pi/RPi-Jukebox-RFID/shared
-sudo chmod -R 775 /home/pi/RPi-Jukebox-RFID/shared
+sudo chown -R pi:www-data /home/phonie/phoniebox/shared
+sudo chmod -R 775 /home/phonie/phoniebox/shared
 # make sure the htdocs folder can be changed by the web server
-sudo chown -R pi:www-data /home/pi/RPi-Jukebox-RFID/htdocs
-sudo chmod -R 775 /home/pi/RPi-Jukebox-RFID/htdocs
+sudo chown -R pi:www-data /home/phonie/phoniebox/htdocs
+sudo chmod -R 775 /home/phonie/phoniebox/htdocs
 # services to launch after boot using systmed
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-startup-sound.service.stretch-default.sample /etc/systemd/system/phoniebox-startup-sound.service
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/phoniebox-gpio-buttons.service.stretch-default.sample /etc/systemd/system/phoniebox-gpio-buttons.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-rfid-reader.service.stretch-default.sample /etc/systemd/system/phoniebox-rfid-reader.service 
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-startup-sound.service.stretch-default.sample /etc/systemd/system/phoniebox-startup-sound.service
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/phoniebox-gpio-buttons.service.stretch-default.sample /etc/systemd/system/phoniebox-gpio-buttons.service
 sudo chown root:root /etc/systemd/system/phoniebox-rfid-reader.service
 sudo chown root:root /etc/systemd/system/phoniebox-startup-sound.service
 sudo chown root:root /etc/systemd/system/phoniebox-gpio-buttons.service
@@ -247,7 +247,7 @@ sudo chmod 644 /etc/systemd/system/phoniebox-rfid-reader.service
 sudo chmod 644 /etc/systemd/system/phoniebox-startup-sound.service
 sudo chmod 644 /etc/systemd/system/phoniebox-gpio-buttons.service
 # In case the older version of Phoniebox still uses crontab to start daemon script, UNDO the crontab changes
-sudo cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/crontab-pi.UNDO-default.sample /var/spool/cron/crontabs/pi
+sudo cp /home/phonie/phoniebox/misc/sampleconfigs/crontab-pi.UNDO-default.sample /var/spool/cron/crontabs/pi
 sudo chown pi:crontab /var/spool/cron/crontabs/pi
 sudo chmod 600 /var/spool/cron/crontabs/pi
 ~~~

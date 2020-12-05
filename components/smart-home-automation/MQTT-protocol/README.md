@@ -133,11 +133,11 @@ First step: copy files to destination locations:
 
 ~~~
 # First copy the daemon script and service config file to the correct directory:
-sudo cp /home/pi/RPi-Jukebox-RFID/components/smart-home-automation/MQTT-protocol/daemon_mqtt_client.py /home/pi/RPi-Jukebox-RFID/scripts/
-sudo cp /home/pi/RPi-Jukebox-RFID/components/smart-home-automation/MQTT-protocol/phoniebox-mqtt-client.service.stretch-default.sample /etc/systemd/system/phoniebox-mqtt-client.service
+sudo cp /home/phonie/phoniebox/components/smart-home-automation/MQTT-protocol/daemon_mqtt_client.py /home/phonie/phoniebox/scripts/
+sudo cp /home/phonie/phoniebox/components/smart-home-automation/MQTT-protocol/phoniebox-mqtt-client.service.stretch-default.sample /etc/systemd/system/phoniebox-mqtt-client.service
 ~~~
 
-Now edit the file `/home/pi/RPi-Jukebox-RFID/scripts/daemon_mqtt_client.py` to match your requirements.
+Now edit the file `/home/phonie/phoniebox/scripts/daemon_mqtt_client.py` to match your requirements.
 Now continue and activate the service.
 
 ~~~

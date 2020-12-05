@@ -5,8 +5,8 @@ if [[ $(id -u) != 0 ]]; then
    exit 1
 fi
 
-if [[ ! -f /home/pi/RPi-Jukebox-RFID/settings/gpio_settings.ini ]]; then
-    cp /home/pi/RPi-Jukebox-RFID/misc/sampleconfigs/gpio_settings.ini.sample /home/pi/RPi-Jukebox-RFID/settings/gpio_settings.ini
+if [[ ! -f /home/phonie/phoniebox/settings/gpio_settings.ini ]]; then
+    cp /home/phonie/phoniebox/misc/sampleconfigs/gpio_settings.ini.sample /home/phonie/phoniebox/settings/gpio_settings.ini
 fi
 
 echo 'disable old services: phoniebox-gpio-buttons and phoniebox-rotary-encoder'
@@ -61,4 +61,3 @@ else
 fi
 #systemctl is-active --quiet phoniebox_gpio_control.service
 #systemctl status phoniebox_gpio_control.service
-

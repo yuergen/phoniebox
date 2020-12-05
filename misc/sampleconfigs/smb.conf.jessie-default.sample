@@ -254,7 +254,7 @@
 
 [pi_jukebox]
    comment= Pi Jukebox
-   path=/home/pi/RPi-Jukebox-RFID/shared
+   path=/home/phonie/phoniebox/shared
    browseable=Yes
    writeable=Yes
    only guest=no

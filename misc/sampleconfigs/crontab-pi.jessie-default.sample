@@ -23,5 +23,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-@reboot mpg123 /home/pi/RPi-Jukebox-RFID/misc/startupsound.mp3
-@reboot python2 /home/pi/RPi-Jukebox-RFID/scripts/daemon_rfid_reader.py &
+@reboot mpg123 /home/phonie/phoniebox/misc/startupsound.mp3
+@reboot python2 /home/phonie/phoniebox/scripts/daemon_rfid_reader.py &

@@ -170,7 +170,7 @@ debug_file = /var/log/mopidy/mopidy-debug.log
 
 [local]
 enabled = true
-media_dir = /home/pi/RPi-Jukebox-RFID/shared/audiofolders
+media_dir = /home/phonie/phoniebox/shared/audiofolders
 excluded_file_extensions =
   .conf
   .jpg
@@ -182,7 +182,7 @@ excluded_file_extensions =
 metadata_timeout = 1
 
 [m3u]
-playlists_dir = /home/pi/RPi-Jukebox-RFID/playlists
+playlists_dir = /home/phonie/phoniebox/playlists
 default_encoding = UTF-8
 default_extension = .m3u
 
@@ -331,7 +331,7 @@ hostname = 0.0.0.0
 #base_dir = $XDG_MUSIC_DIR
 default_encoding = UTF-8
 default_extension = .m3u
-playlists_dir = /home/pi/RPi-Jukebox-RFID/playlists
+playlists_dir = /home/phonie/phoniebox/playlists
 
 [softwaremixer]
 #enabled = true
@@ -351,7 +351,7 @@ metadata_timeout = 1
 [local]
 enabled = true
 #library = json
-media_dir = /home/pi/RPi-Jukebox-RFID/shared/audiofolders
+media_dir = /home/phonie/phoniebox/shared/audiofolders
 #scan_timeout = 1000
 #scan_flush_threshold = 100
 #scan_follow_symlinks = false
@@ -392,7 +392,7 @@ cd; rm stretch-install-*; wget https://raw.githubusercontent.com/MiczFlor/RPi-Ju
 ~~~
 ## Change Playlists_Folders_Path to:
 ~~~
-/home/pi/RPi-Jukebox-RFID/playlists
+/home/phonie/phoniebox/playlists
 ~~~
 ## You have to disable MPD because we use mopidy instead and MPD is included there.
 
