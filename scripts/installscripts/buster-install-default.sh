@@ -96,7 +96,7 @@ log_close() {
 
 
 welcome() {
-    clear
+    #clear
     echo "#####################################################
 #    ___  __ ______  _  __________ ____   __  _  _  #
 #   / _ \/ // / __ \/ |/ /  _/ __/(  _ \ /  \( \/ ) #
@@ -147,7 +147,7 @@ config_wifi() {
     #####################################################
     # Ask if wifi config
 
-    clear
+    #clear
 
     echo "#####################################################
 #
@@ -228,7 +228,7 @@ check_existing() {
     cd ~ || exit
     if [ -d "${jukebox_dir}" ]; then
         # Houston, we found something!
-        clear
+        #clear
         echo "#####################################################
 #
 # . . . * alert * alert * alert * alert * . . .
@@ -276,7 +276,7 @@ check_existing() {
                     echo "The existing configuration will be used."
                     echo "Just a few more questions to answer."
                     read -rp "Hit ENTER to proceed to the next step." INPUT
-                    clear
+                    #clear
                     ;;
             esac
         fi
@@ -391,7 +391,7 @@ https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons"
 
     # Check if we found a Phoniebox install configuration earlier and ask if to run this now
     if [ "${EXISTINGusePhonieboxInstall}" == "YES" ]; then
-        clear
+        #clear
         echo "Using the existing configuration, you can run a non-interactive install."
         echo "This will re-cycle found content (specified just now) as well as the"
         echo "system information from last time (wifi, audio interface, spotify, etc.)."
@@ -401,7 +401,7 @@ https://github.com/MiczFlor/RPi-Jukebox-RFID/wiki/Using-GPIO-hardware-buttons"
                 ;;
             *)
                 cd "${home_dir}"
-                clear
+                #clear
                 ./buster-install-default.sh -a
                 exit
                 ;;
@@ -413,7 +413,7 @@ config_audio_interface() {
     #####################################################
     # Audio iFace
 
-    clear
+    #clear
 
     echo "#####################################################
 #
@@ -444,7 +444,7 @@ config_spotify() {
     #####################################################
     # Configure spotify
 
-    clear
+    #clear
 
     echo "#####################################################
 #
@@ -471,7 +471,7 @@ config_spotify() {
             ;;
         *)
             SPOTinstall=YES
-            clear
+            #clear
             echo "#####################################################
 #
 # CREDENTIALS for Spotify
@@ -510,7 +510,7 @@ config_mpd() {
     #####################################################
     # Configure MPD
 
-    clear
+    #clear
 
     echo "#####################################################
 #
@@ -543,7 +543,7 @@ config_audio_folder() {
     # Folder path for audio files
     # default: ${JUKEBOX_HOME_DIR}/shared/audiofolders
 
-    clear
+    #clear
 
     echo "#####################################################
 #
@@ -588,7 +588,7 @@ config_gpio() {
     #####################################################
     # Configure GPIO
 
-    clear
+    #clear
 
     echo "#####################################################
 #
