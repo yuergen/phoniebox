@@ -1211,17 +1211,17 @@ finish_installation() {
 
     echo "Reboot is needed to activate all settings"
     # Use -e to display response of user in the logfile
-    read -e -r -p "Would you like to reboot now? [Y/n] " response
+    read -e -r -p "Would you like to reboot now? [y/N] " response
     case "$response" in
-        [nN][oO]|[nN])
-        # Close logging
-        log_close
-            ;;
+        [yY][jJ]|[sS])
+          # Close logging
+          log_close
+              sudo shutdown -r now
+          ;;
         *)
-        # Close logging
-        log_close
-            sudo shutdown -r now
-            ;;
+          # Close logging
+          log_close
+        ;;
     esac
 }
 
