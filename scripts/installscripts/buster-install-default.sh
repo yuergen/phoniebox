@@ -1021,12 +1021,12 @@ wifi_settings() {
         sudo sed -i 's/%WIFIcountryCode%/'"$WIFIcountryCode"'/' "${wpa_supplicant_conf}"
         sudo chown root:netdev "${wpa_supplicant_conf}"
         sudo chmod 664 "${wpa_supplicant_conf}"
-    fi
 
-    # start DHCP
-    echo "Starting dhcpcd service..."
-    sudo service dhcpcd start
-    sudo systemctl enable dhcpcd
+        # start DHCP
+        echo "Starting dhcpcd service..."
+        sudo service dhcpcd start
+        sudo systemctl enable dhcpcd
+    fi
 
 # / WiFi settings (SSID password)
 ###############################
